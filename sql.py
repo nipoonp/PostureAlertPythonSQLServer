@@ -9,9 +9,9 @@
 
 import pymysql
 
-connection = pymysql.connect(host='localhost', user='Nipoon', password='890xyz', db='celebs')
+connection = pymysql.connect(host='localhost', user='root', password='12345678', db='PostureAlert')
 cursor=connection.cursor()
-sql=("SELECT * FROM celebs")
+sql=("SELECT * FROM SensorReadings WHERE Posture IS NULL")
 cursor.execute(sql)
 data=cursor.fetchall()
 print(data)
