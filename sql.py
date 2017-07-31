@@ -1,7 +1,6 @@
 # Import the iris dataset
 from sklearn import datasets
 import random
-import xlrd
 import pymysql
 
 # connection = pymysql.connect(host='localhost', user='root', password='890xyz', db='PostureAlert')
@@ -20,7 +19,7 @@ def setPosture(predictions):
     # print(readingID , predictions)
     for i in range(len(predictions)):
     
-        connection = pymysql.connect(host='localhost', user='root', password='890xyz', db='PostureAlert')
+        connection = pymysql.connect(host='localhost', user='root', password='12345678', db='PostureAlert')
         cursor=connection.cursor()
         print("UPDATE SensorReadings SET Posture = %s WHERE ReadingID = %s", str(predictions[i]), str(readingID[i]))
         sql=("UPDATE SensorReadings SET Posture = %s WHERE ReadingID = %s;")
@@ -178,8 +177,8 @@ while (1):
         getTrainDataset()
         getNewReadings()
         print("Testing ", outputLabel)
-        # predictions = measure(algo, outputLabel)
-        # setPosture(predictions)
+        predictions = measure(algo, outputLabel)
+        setPosture(predictions)
     time.sleep(10)
 
 
