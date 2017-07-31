@@ -166,10 +166,10 @@ algos = {
             # 'Tree': tree.DecisionTreeClassifier(),
             # 'SKLearn K-Nearest Neighbor': neighbors.KNeighborsClassifier(),
             # 'Random': RandomClassifier(),
-            'Nearest Neighbor': NNClassifier(),
+            # 'Nearest Neighbor': NNClassifier(),
             '3-Nearest Neighbor': KNNClassifier(3),
-            '7-Nearest Neighbor': KNNClassifier(7),
-            '15-Nearest Neighbor': KNNClassifier(15),
+            # '7-Nearest Neighbor': KNNClassifier(7),
+            # '15-Nearest Neighbor': KNNClassifier(15),
         }
 
 # print("8...................");
