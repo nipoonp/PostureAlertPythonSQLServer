@@ -68,7 +68,7 @@ def getNewReadings():
     labels = []
     readingID = []
     # new data set
-    connection = pymysql.connect(host='localhost', user='root', password='890xyz', db='PostureAlert')
+    connection = pymysql.connect(host='localhost', user='root', password='12345678', db='PostureAlert')
     cursor=connection.cursor()
     sql=("SELECT * FROM SensorReadings WHERE Posture IS NULL")
     cursor.execute(sql)
@@ -178,8 +178,8 @@ while (1):
         getTrainDataset()
         getNewReadings()
         print("Testing ", outputLabel)
-        predictions = measure(algo, outputLabel)
-        setPosture(predictions)
+        # predictions = measure(algo, outputLabel)
+        # setPosture(predictions)
     time.sleep(10)
 
 
