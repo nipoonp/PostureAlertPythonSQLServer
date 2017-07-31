@@ -3,9 +3,6 @@ from sklearn import datasets
 import random
 import pymysql
 
-# connection = pymysql.connect(host='localhost', user='root', password='890xyz', db='PostureAlert')
-# cursor=connection.cursor()
-
 features = []
 labels = []
 X_train = []
@@ -25,16 +22,12 @@ def setPosture(predictions):
         sql=("UPDATE SensorReadings SET Posture = %s WHERE ReadingID = %s;")
         cursor.execute(sql, (str(predictions[i]), str(readingID[i])))
         connection.commit()
-        print('changed', cursor.rowcount)
+        print('Changed', cursor.rowcount)
         cursor.close()
         connection.close()
 
-
- 
-
-# -------------------------------------------   -----------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------------------
 def getTrainDataset():
-    # print("1...................");
     global features, labels, X_train, y_train
     features = []
     labels = []
@@ -61,7 +54,6 @@ def getTrainDataset():
 
 # ------------------------------------------------------------------------------------------------------------------------------
 def getNewReadings():
-    # print("2...................");
     global features, labels, X_test, y_test, readingID
     features = []
     labels = []
@@ -89,7 +81,6 @@ def getNewReadings():
 # ------------------------------------------------------------------------------------------------------------------------------
 
 def measure(classifier, outputLabel):
-    # print("3...................");
     # train
     classifier.fit(X_train, y_train)
 
@@ -101,7 +92,6 @@ def measure(classifier, outputLabel):
 
 import random;
 class RandomClassifier():
-    # print("4...................");
     def fit(self, X_train, y_train):
         self.X_train = X_train
         self.y_train = y_train
@@ -117,7 +107,6 @@ class RandomClassifier():
 from scipy import spatial
 from collections import deque, Counter
 class KNNClassifier(RandomClassifier):
-    # print("5...................");
     def __init__(self, k):
         self.k = k
 
@@ -160,7 +149,6 @@ class NNClassifier(KNNClassifier):
 
 import time
 from sklearn import metrics, tree, neighbors
-# print("7...................");
 algos = {
             # 'Tree': tree.DecisionTreeClassifier(),
             # 'SKLearn K-Nearest Neighbor': neighbors.KNeighborsClassifier(),
@@ -171,7 +159,6 @@ algos = {
             # '15-Nearest Neighbor': KNNClassifier(15),
         }
 
-# print("8...................");
 while (1):
     for outputLabel, algo in algos.items():
         getTrainDataset()
