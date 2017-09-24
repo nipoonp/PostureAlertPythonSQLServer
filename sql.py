@@ -78,18 +78,18 @@ def getTrainDataset():
 # ------------------------------------------------------------------------------------------------------------------------------
 
 def setPosture(predictions):
-    global readingID
+    global readingID, currentUser
     # print(readingID , predictions)
     for i in range(len(predictions)):
     
         connection = pymysql.connect(host='13.55.201.70', user='root', password='12345678', db='PostureAlert')
-        cursor=connection.cursor()
-        print("UPDATE SensorReadings SET Posture = %s WHERE ReadingID = %s", str(predictions[i]), str(readingID[i]))
-        sql=("UPDATE SensorReadings SET Posture = %s WHERE ReadingID = %s;")
-        cursor.execute(sql, (str(predictions[i]), str(readingID[i])))
-        connection.commit()
-        print('Changed', cursor.rowcount)
-        cursor.close()
+        # cursor=connection.cursor()
+        print("UPDATE SensorReadings SET Posture = %s WHERE ReadingID = %s for currentUser = %s", str(predictions[i]), str(readingID[i]), str(currentUser))
+        # sql=("UPDATE SensorReadings SET Posture = %s WHERE ReadingID = %s;")
+        # cursor.execute(sql, (str(predictions[i]), str(readingID[i])))
+        # connection.commit()
+        # print('Changed', cursor.rowcount)
+        # cursor.close()
         connection.close()
 
 # ------------------------------------------------------------------------------------------------------------------------------
